@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+const path = require('path');
 
 const rtsIndex = require('./routes/index.router');
 
@@ -14,8 +15,12 @@ var app = express();
 // middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'dist/app-ui')));
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
+app.use('/*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/dist/app-ui/index.html'))
+})
 
 // error handler
 app.use((err, req, res, next) => {
