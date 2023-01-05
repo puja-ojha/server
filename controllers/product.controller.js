@@ -4,7 +4,6 @@ const Product = require('../models/product.model');
 exports.getAllProducts = (req, res, next) => {
 	Product
 		.find()
-		// .select('_id name price')
 		.exec()
 		.then(products => {
 			const response = {
@@ -29,7 +28,6 @@ exports.getAllProducts = (req, res, next) => {
 exports.getAllActiveProducts = (req, res, next) => {
 	Product
 		.find()
-		// .select('_id name price')
 		.exec()
 		.then(products => {
             
@@ -70,7 +68,6 @@ exports.createOneProduct = (req, res, next) => {
 					name: product.name,
 					price: product.price,
                     status: product.status,
-					productImage: product.productImage
 				}
 			});
 		})
@@ -105,7 +102,7 @@ exports.updateOneProduct = (req, res, next) => {
     const productName = req.body.name;
     const productPrice = req.body.price;
     const productStatus = req.body.status;
-    const productImage = req.body.productImage;
+
     
 	Product
         .findByIdAndUpdate({ _id: productId }, { name: productName, 
@@ -140,11 +137,11 @@ exports.deleteOneProduct = (req, res, next) => {
 };
 
 function createProduct(req) {
+	//console.log('req : ', req);
 	return new Product({
 		_id: new mongoose.Types.ObjectId(),
 		name: req.body.name,
 		price: req.body.price,
         status: req.body.status,
-		productImage: req.body.productImage
 	});
 }

@@ -1,7 +1,7 @@
 {
     "development": {
         "PORT": 3000,
-        "MONGODB_URI": "mongodb://eshopdb:phbJX5E4fTdSroNqSrr6x52pqtvjyo4DaCV9ouCj1L6LfuVBEPTh2Oju6hVZMOuBqSPZJtCIgDTtACDbmrDAAw==@eshopdb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@eshopdb@",
+        "MONGODB_URI": "mongodb://localhost:27017/EShopDatabase",
         "JWT_SECRET": "SECRET#123",
         "JWT_EXP": "60m"
     },
